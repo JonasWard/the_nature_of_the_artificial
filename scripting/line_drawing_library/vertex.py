@@ -4,7 +4,7 @@ class Vertex():
     DISTANCE_TOLERANCE = 0.001
 
     def __init__(self, x, y=0., z=0.):
-        if isinstance(x, float):
+        if isinstance(x, float) or isinstance(x, int):
             self.x = x
             self.y = y
             self.z = z
