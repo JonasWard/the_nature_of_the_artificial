@@ -2,6 +2,9 @@ import matplotlib.pyplot as plt
 from matplotlib.path import Path
 import matplotlib.patches as patches
 
+from vertex import Vertex
+from polyline import Polyline
+
 def plot_vertex(v):
     pass
 
@@ -29,8 +32,10 @@ def plot_polyline(pl):
     path = Path(verts, codes)
     if pl.closed:
         patch = patches.PathPatch(path, facecolor='orange', lw=2)
-
         ax.add_patch(patch)
+    else:
+        xs, ys = zip(*verts)
+        ax.plot(xs, ys, lw=2, color='black')
 
     x0,x1,y0,y1,_,_ = pl.bounds()
     dx = x1 - x0
@@ -43,3 +48,8 @@ def plot_polyline(pl):
 def simple_plot(geos):
     pass
 
+if __name__ == "__main__":
+    vs = [Vertex(i*1.%3.56, i*4.56%7.8, i*.2%.345) for i in range(100)]
+    pl = Polyline(vs)
+
+    plot_polyline(pl)
