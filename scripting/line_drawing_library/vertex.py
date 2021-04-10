@@ -1,4 +1,5 @@
 from math import sin, cos, atan2
+from interval import Interval
 
 class Vertex():
     DISTANCE_TOLERANCE = 0.001
@@ -119,10 +120,10 @@ class Vertex():
     def bounds(vs):
         if isinstance(vs, list):
             x, y, z = zip(*[v.as_tuple() for v in vs])
-            return (min(x), max(x), min(y), max(y), min(z), max(z))
+            return (Interval(min(x), max(x)), Interval(min(y), max(y)), Interval(min(z), max(z)))
         
         else:
-            return x, x, y, y, z, z
+            return Interval(x, x), Interval(y, y), Interval(z, z)
 
 if __name__ == "__main__":
     v_a = Vertex(1., 2., 3.)

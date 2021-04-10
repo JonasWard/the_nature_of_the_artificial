@@ -17,6 +17,9 @@ class Line():
     def parallel(self, other):
         return self.dir.parallel(other.dir)
 
+    def normal(self):
+        return Vertex(self.dir).unitize().rotate_z(1.5707)
+
     def intersect(self, ln):
         if self.parallel(ln):
             return None

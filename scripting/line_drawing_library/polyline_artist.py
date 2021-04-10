@@ -11,6 +11,15 @@ def plot_vertex(v):
 def read_vertex(v):
     return (v.x, v.y)
 
+def read_vertexes(vs):
+    return zip(*[(v.x, v.y) for v in vs])
+
+def plot_points(vs):
+    x, y = read_vertexes(vs)
+    plt.scatter(x, y)
+
+    plt.show()
+
 def plot_polyline(pl):
     verts = []
     codes = []
@@ -37,11 +46,9 @@ def plot_polyline(pl):
         xs, ys = zip(*verts)
         ax.plot(xs, ys, lw=2, color='black')
 
-    x0,x1,y0,y1,_,_ = pl.bounds()
-    dx = x1 - x0
-    dy = y1 - y0
-    ax.set_xlim(x0-dx*.1,x1+dx*.1)
-    ax.set_ylim(y0-dy*.1,y1+dy*.1)
+    x_int,y_int,_ = pl.bounds()
+    ax.set_xlim((x_int*1.1).as_tuple())
+    ax.set_ylim((y_int*1.1).as_tuple())
 
     plt.show()
 
@@ -53,3 +60,5 @@ if __name__ == "__main__":
     pl = Polyline(vs)
 
     plot_polyline(pl)
+
+    plot_points(vs)
