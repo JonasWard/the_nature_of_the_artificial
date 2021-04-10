@@ -16,7 +16,10 @@ def read_vertexes(vs):
 
 def plot_points(vs):
     x, y = read_vertexes(vs)
-    plt.scatter(x, y)
+
+    fig, ax = plt.subplots()
+    ax.set_aspect(1.)
+    ax.scatter(x, y)
 
     plt.show()
 
@@ -37,6 +40,7 @@ def plot_polyline(pl):
         codes.append(Path.CLOSEPOLY)
 
     fig, ax = plt.subplots()
+    ax.set_aspect(1.)
 
     path = Path(verts, codes)
     if pl.closed:
