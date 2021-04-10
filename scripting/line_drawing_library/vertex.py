@@ -91,6 +91,9 @@ class Vertex():
             return True
         return False
 
+    def as_tuple(self):
+        return self.x, self.y, self.z
+
     def __eq__(self, other):
         return self.distance(other) < Vertex.DISTANCE_TOLERANCE
 
@@ -112,6 +115,15 @@ class Vertex():
     def __repr__(self):
         return "Vertex: {}, {}, {}".format(self.x, self.y, self.z)
 
+    @staticmethod
+    def bounds(vs):
+        if isinstance(vs, list):
+            x, y, z = zip(*[v.as_tuple() for v in vs])
+            return (min(x), max(x), min(y), max(y), min(z), max(z))
+        
+        else:
+            return x, x, y, y, z, z
+
 if __name__ == "__main__":
     v_a = Vertex(1., 2., 3.)
     v_b = Vertex(2., 1., 1.)
@@ -125,6 +137,7 @@ if __name__ == "__main__":
 
     print(v_a + v_b)
     print(v_a * v_b)
+    print(v_a * 1.)
     print(v_a.unitize())
 
     print(v_a.distance(v_b))

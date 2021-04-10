@@ -12,7 +12,7 @@ class Line():
         return self.closest_point(v).distance_to(v)
 
     def point_at(self, t):
-        return self.v0 + t * self.dir
+        return self.v0 + self.dir * t
 
     def parallel(self, other):
         return self.dir.parallel(other.dir)

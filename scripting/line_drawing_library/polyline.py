@@ -1,5 +1,6 @@
 from math import floor
 from line import Line
+from vertex import Vertex
 
 class Polyline():
     def __init__(self, vs, closed = False):
@@ -12,7 +13,7 @@ class Polyline():
             self.closed = True
             self.vs.pop(-1)
 
-        self.ns
+        # self.ns
 
     def _normals(self):
         dirs = []
@@ -21,6 +22,9 @@ class Polyline():
 
         if not(self.closed):
             dirs.append(dirs[-1])
+
+    def bounds(self):
+        return Vertex.bounds(self.vs)
 
     @property
     def count(self):
@@ -37,6 +41,9 @@ class Polyline():
 
             return Line(self.vs[i_0], self.vs[i_1])
 
+    def point_at_index(self, i):
+        return self.vs[int(i)]
+
     def point_at(self, t):
         if self.closed:
             t %= self.count()
@@ -46,4 +53,18 @@ class Polyline():
         if i > 0:
             t -= i
 
-        return self.segement_at(i).point_at(t)
+        return self.segement_at(int(i)).point_at(t)
+
+    def __repr__(self):
+        start = "Closed" if self.closed else "Open"
+            
+        return "{} Polyline with {} vertices".format(start, len(self.vs))
+
+if __name__ == "__main__":
+    vs = [Vertex(i*1.%3.56, i*4.56%7.8, i*.2%.345) for i in range(100)]
+
+    pl = Polyline(vs)
+    print(pl)
+    print((pl.point_at_index(10)+pl.point_at_index(9))*.5)
+    print(pl.point_at(-9.5))
+    print(pl.bounds())
