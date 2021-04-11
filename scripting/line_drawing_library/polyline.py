@@ -32,7 +32,7 @@ class Polyline():
 
     def segments(self):
         segs = []
-        for i in range(count - 1):
+        for i in range(self.count - 1):
             segs.append(self.segement_at(i))
 
         if self.closed:
