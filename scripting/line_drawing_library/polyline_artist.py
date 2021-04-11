@@ -123,13 +123,14 @@ def simple_plot(geos):
     fig, ax = plt.subplots()
 
     bounds, vertices = geos_to_plot(ax, geos)
-    vertices_to_plot(vertices, ax)
-
     x, y, _ = zip(*bounds)
     x, y = list(x), list(y)
-    x_vs, y_vs , _ = Vertex.bounds(vertices)
-    x.append(x_vs)
-    y.append(y_vs)
+
+    if any(vertices):
+        vertices_to_plot(vertices, ax)
+        x_vs, y_vs , _ = Vertex.bounds(vertices)
+        x.append(x_vs)
+        y.append(y_vs)
 
     x,y = Interval.bounds(x), Interval.bounds(y)
 
