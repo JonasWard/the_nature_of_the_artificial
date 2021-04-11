@@ -7,6 +7,9 @@ from vertex import Vertex
 from line import Line
 from polyline import Polyline
 
+plt.rcParams['figure.figsize'] = [12, 12]
+plt.rcParams['figure.dpi'] = 80 # 200 e.g. is really fine, but slower
+
 def plot_vertex(v):
     pass
 
@@ -135,6 +138,7 @@ def simple_plot(geos):
     plt.show()
 
 if __name__ == "__main__":
+
     vs = [Vertex(i*1.%3.56, i*4.56%7.8, i*.2%.345) for i in range(100)]
     pl = Polyline(vs)
 
