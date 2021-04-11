@@ -70,6 +70,8 @@ class Vertex():
         s, c = sin(angle), cos(angle)
         self.x, self.y = c * self.x - s * self.y, s * self.x + c * self.y
 
+        return self
+
     def length(self):
         return (self.x ** 2. + self.y ** 2. + self.z ** 2.) ** .5
 
