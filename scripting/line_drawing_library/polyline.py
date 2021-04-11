@@ -77,7 +77,19 @@ class Polyline():
             
         return "{} Polyline with {} vertices".format(start, len(self.vs))
 
+    @staticmethod
+    def rectangle(x_int, y_int):
+        return Polyline(
+            vs = [
+                Vertex(x_int.min, y_int.min),
+                Vertex(x_int.max, y_int.min),
+                Vertex(x_int.max, y_int.max),
+                Vertex(x_int.min, y_int.max),
+            ], closed = True
+        )
+
 if __name__ == "__main__":
+    from interval import Interval
     vs = [Vertex(i*1.%3.56, i*4.56%7.8, i*.2%.345) for i in range(100)]
 
     pl = Polyline(vs)
@@ -85,3 +97,5 @@ if __name__ == "__main__":
     print((pl.point_at_index(10)+pl.point_at_index(9))*.5)
     print(pl.point_at(-9.5))
     print(pl.bounds())
+
+    print(Polyline.rectangle(Interval(0.1, 10.), Interval(-.5, 4.5)))
