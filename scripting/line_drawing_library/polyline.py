@@ -36,7 +36,7 @@ class Polyline():
             segs.append(self.segement_at(i))
 
         if self.closed:
-            append(Line(self.vs[-1], self.vs[0]))
+            segs.append(Line(self.vs[-1], self.vs[0]))
 
         return segs
 
@@ -98,4 +98,7 @@ if __name__ == "__main__":
     print(pl.point_at(-9.5))
     print(pl.bounds())
 
-    print(Polyline.rectangle(Interval(0.1, 10.), Interval(-.5, 4.5)))
+    rec = Polyline.rectangle(Interval(0.1, 10.), Interval(-.5, 4.5))
+    rec.segments()
+
+    print(rec)
