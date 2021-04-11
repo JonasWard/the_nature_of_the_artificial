@@ -19,6 +19,11 @@ class Interval:
     def as_tuple(self):
         return self.min, self.max
 
+    def match_delta(self, other):
+        mid = (self.min + self.max) * .5
+        self.min = mid - other.delta * .5
+        self.max = mid + other.delta * .5
+
     def __mul__(self, other):
         d = self.delta*(other - 1.)
         return Interval(self.min - d, self.max + d)
@@ -35,10 +40,10 @@ class Interval:
         return self.min == other.min and self.max == other.max
 
     def __lt__(self, other):
-        return self.max <= other.min
+        return self.delta <= other.delta
 
     def __gt__(self, other):
-        return self.min >= other.max
+        return self.delta >= other.delta
 
     def __repr__(self):
         return "Interval {}".format(self.simple_repr())

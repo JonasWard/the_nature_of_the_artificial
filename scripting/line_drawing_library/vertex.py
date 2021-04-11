@@ -125,6 +125,18 @@ class Vertex():
         else:
             return Interval(x, x), Interval(y, y), Interval(z, z)
 
+    @staticmethod
+    def x(value):
+        return Vertex(value, 0., 0.)
+
+    @staticmethod
+    def y(value):
+        return Vertex(0., value, 0.)
+
+    @staticmethod
+    def z(value):
+        return Vertex(0., 0., value)
+
 if __name__ == "__main__":
     v_a = Vertex(1., 2., 3.)
     v_b = Vertex(2., 1., 1.)

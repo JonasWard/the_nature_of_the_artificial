@@ -1,3 +1,5 @@
+from vertex import Vertex
+
 class Line():
     def __init__(self, v0, v1):
         self.v0 = v0
@@ -25,3 +27,6 @@ class Line():
             return None
         else:
             pass
+
+    def bounds(self):
+        return Vertex.bounds([self.v0, self.v1])
