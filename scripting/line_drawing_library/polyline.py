@@ -30,6 +30,16 @@ class Polyline():
     def count(self):
         return len(self.vs)
 
+    def segments(self):
+        segs = []
+        for i in range(count - 1):
+            segs.append(self.segement_at(i))
+
+        if self.closed:
+            append(Line(self.vs[-1], self.vs[0]))
+
+        return segs
+
     def segement_at(self, i):
         if i < 0.:
             return Line(self.vs[0], self.vs[1])
@@ -54,6 +64,13 @@ class Polyline():
             t -= i
 
         return self.segement_at(int(i)).point_at(t)
+
+    def length(self):
+        l = 0.
+        for s in segments:
+            l += s.length()
+
+        return l
 
     def __repr__(self):
         start = "Closed" if self.closed else "Open"

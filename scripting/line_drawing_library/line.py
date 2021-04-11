@@ -30,3 +30,6 @@ class Line():
 
     def bounds(self):
         return Vertex.bounds([self.v0, self.v1])
+
+    def length(self):
+        return self.dir.length()
