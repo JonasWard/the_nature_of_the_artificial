@@ -121,10 +121,12 @@ def geos_to_plot(ax, geos):
 
 def simple_plot(geos):
     fig, ax = plt.subplots()
-
+    x, y = [], []
+    
     bounds, vertices = geos_to_plot(ax, geos)
-    x, y, _ = zip(*bounds)
-    x, y = list(x), list(y)
+    if any(bounds):
+        x, y, _ = zip(*bounds)
+        x, y = list(x), list(y)
 
     if any(vertices):
         vertices_to_plot(vertices, ax)
@@ -132,9 +134,9 @@ def simple_plot(geos):
         x.append(x_vs)
         y.append(y_vs)
 
-    x,y = Interval.bounds(x), Interval.bounds(y)
-
-    ax_bounding(ax, (x, y))
+    if any(x) and any(y):
+        x,y = Interval.bounds(x), Interval.bounds(y)
+        ax_bounding(ax, (x, y))
 
     plt.show()
 
