@@ -1,4 +1,4 @@
-from math import floor
+from math import floor, sin, cos, pi
 from line import Line
 from vertex import Vertex
 
@@ -87,6 +87,11 @@ class Polyline():
                 Vertex(x_int.min, y_int.max),
             ], closed = True
         )
+
+    @staticmethod
+    def polygon(sides = 5, radius = 5.):
+        d = pi * 2. / 5
+        return Polyline([Vertex(cos(d*i)*r, sin(d*i)*r) for i in range(5)], True)
 
 if __name__ == "__main__":
     from interval import Interval
