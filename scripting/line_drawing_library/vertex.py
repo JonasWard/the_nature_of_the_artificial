@@ -139,6 +139,16 @@ class Vertex():
     def z(value):
         return Vertex(0., 0., value)
 
+    @staticmethod
+    def center(vs):
+        x, y, z = 0., 0., 0.
+        for v in vs:
+            x += v.x
+            y += v.y
+            z += v.z
+
+        return Vertex(x/len(vs), y/len(vs), z/len(vs))
+        
 if __name__ == "__main__":
     v_a = Vertex(1., 2., 3.)
     v_b = Vertex(2., 1., 1.)

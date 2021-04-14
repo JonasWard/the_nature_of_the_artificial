@@ -33,3 +33,6 @@ class Line():
 
     def length(self):
         return self.dir.length()
+
+    def center(self):
+        return self.point_at(.5)

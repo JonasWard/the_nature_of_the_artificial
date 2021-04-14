@@ -77,6 +77,9 @@ class Polyline():
             
         return "{} Polyline with {} vertices".format(start, len(self.vs))
 
+    def center(self):
+        return Vertex.center(self.vs)
+
     @staticmethod
     def rectangle(x_int, y_int):
         return Polyline(
