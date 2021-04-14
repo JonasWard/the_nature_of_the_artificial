@@ -90,8 +90,8 @@ class Polyline():
 
     @staticmethod
     def polygon(sides = 5, r = 5.):
-        d = pi * 2. / 5
-        return Polyline([Vertex(cos(d*i)*r, sin(d*i)*r) for i in range(5)], True)
+        d = pi * 2. / sides
+        return Polyline([Vertex(cos(d*i)*r, sin(d*i)*r) for i in range(sides)], True)
 
 if __name__ == "__main__":
     from interval import Interval
