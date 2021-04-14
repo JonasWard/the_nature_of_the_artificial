@@ -148,7 +148,22 @@ class Vertex():
             z += v.z
 
         return Vertex(x/len(vs), y/len(vs), z/len(vs))
+
+    @staticmethod
+    def reduce_vs(vs, d = .001):
+        removed_vs = True
+
+        while removed_vs:
+            n_vs = [vs[0]]
+            for i in range(1, len(vs)):
+                if n_vs[-1].distance(vs[i]) > d:
+                    n_vs.append(vs[i])
+
+            removed_vs = not(len(n_vs) == len(vs))
+            vs = n_vs
         
+        return vs
+
 if __name__ == "__main__":
     v_a = Vertex(1., 2., 3.)
     v_b = Vertex(2., 1., 1.)
@@ -167,5 +182,6 @@ if __name__ == "__main__":
 
     print(v_a.distance(v_b))
     print(v_a == v_b)
+
     # print(v_a / v_b)
     

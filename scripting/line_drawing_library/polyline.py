@@ -7,7 +7,7 @@ class Polyline():
         if len(vs) < 2:
             raise ValueError("need at least 2 points for a avlid polyline")
 
-        self.vs = vs
+        self.vs = Vertex.reduce_vs(vs)
         self.closed = closed
         if vs[0] == vs[-1]:
             self.closed = True
@@ -110,3 +110,14 @@ if __name__ == "__main__":
     rec.segments()
 
     print(rec)
+
+    plg = Polyline.polygon(6, 5.)
+    vs = []
+
+    for v in plg.vs:
+        vs.extend([v,v])
+
+    print(vs)
+    print(len(vs))
+    plg = Polyline(vs, True)
+    print(plg)
