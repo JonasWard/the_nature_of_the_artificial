@@ -67,7 +67,7 @@ class Polyline():
 
     def length(self):
         l = 0.
-        for s in segments:
+        for s in self.segments():
             l += s.length()
 
         return l
@@ -92,9 +92,9 @@ class Polyline():
         )
 
     @staticmethod
-    def polygon(sides = 5, r = 5.):
+    def polygon(sides = 5, r = 5., phase = 0.):
         d = pi * 2. / sides
-        return Polyline([Vertex(cos(d*i)*r, sin(d*i)*r) for i in range(sides)], True)
+        return Polyline([Vertex(cos(d*i+phase)*r, sin(d*i+phase)*r) for i in range(sides)], True)
 
 if __name__ == "__main__":
     from interval import Interval
