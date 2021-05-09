@@ -121,8 +121,10 @@ def geos_to_plot(ax, geos):
 
 def simple_plot(geos):
     fig, ax = plt.subplots()
-    simple_plot_figax(fig, ax, geos)
-    
+    fig = simple_plot_figax(fig, ax, geos)
+
+    plt.show()
+
 def simple_plot_figax(fig, ax, geos):
     x, y = [], []
     
@@ -141,7 +143,7 @@ def simple_plot_figax(fig, ax, geos):
         x,y = Interval.bounds(x), Interval.bounds(y)
         ax_bounding(ax, (x, y))
 
-    plt.show()
+    return fig
 
 if __name__ == "__main__":
 
