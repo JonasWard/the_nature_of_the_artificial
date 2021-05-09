@@ -30,7 +30,7 @@ def reading_polygons(vertex_lists):
         for v_list in vertex_lists:
             plgs.extend(reading_polygons(v_list))
     elif isinstance(vertex_lists[0], Vertex):
-        print(vertex_lists)
+        # print(vertex_lists)
         plgs = [Polyline(vertex_lists, True)]
 
     return plgs

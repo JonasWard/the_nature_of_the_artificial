@@ -121,6 +121,9 @@ def geos_to_plot(ax, geos):
 
 def simple_plot(geos):
     fig, ax = plt.subplots()
+    simple_plot_figax(fig, ax, geos)
+    
+def simple_plot_figax(fig, ax, geos):
     x, y = [], []
     
     bounds, vertices = geos_to_plot(ax, geos)
