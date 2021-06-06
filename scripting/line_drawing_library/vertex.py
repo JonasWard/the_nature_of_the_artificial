@@ -1,5 +1,6 @@
 from math import sin, cos, atan2
 from interval import Interval
+from uuid import uuid4
 
 class Vertex():
     DISTANCE_TOLERANCE = 0.001
@@ -15,6 +16,11 @@ class Vertex():
             self.z = x.z
         else:
             raise TypeError("Vertex initialization only accept floats or Vertex (not {})".format(type(x)))
+
+        self.uuid = uuid4()
+
+    def __hash__(self):
+        return self.uuid
 
     def add(self, other):
         self.x += other.x
