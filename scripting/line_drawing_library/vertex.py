@@ -106,7 +106,7 @@ class Vertex():
         return self.x, self.y, self.z
 
     def __eq__(self, other):
-        return self.distance(other) < Vertex.DISTANCE_TOLERANCE
+        return self.uuid == other.uuid
 
     def __abs__(self, other):
         return Vertex(abs(self.x), abs(self.y), abs(self.z))
