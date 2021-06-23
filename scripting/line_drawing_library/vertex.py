@@ -61,7 +61,7 @@ class Vertex():
             return self.cross_product(other)
         
         else:
-            raise TypeError("Vertex multiplication not defined for {}".format(type(x)))
+            raise TypeError("Vertex multiplication not defined for {}".format(type(other)))
 
     def division(self, other):
         if isinstance(other, float) or isinstance(other, int):
