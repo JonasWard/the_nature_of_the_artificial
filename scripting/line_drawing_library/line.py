@@ -36,3 +36,18 @@ class Line():
 
     def center(self):
         return self.point_at(.5)
+
+    def move(self, v):
+        self.v0.add(v)
+        self.v1.add(v)
+
+        return self
+
+    def copy(self):
+        return Line(
+            self.v0.copy(),
+            self.v1.copy()
+        )
+
+    def offset(self, d):
+        return self.copy().move(self.normal() * d)

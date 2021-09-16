@@ -105,6 +105,9 @@ class Vertex():
     def as_tuple(self):
         return self.x, self.y, self.z
 
+    def copy(self):
+        return Vertex(self.x, self.y, self.z)
+
     def __eq__(self, other):
         return self.uuid == other.uuid
 
