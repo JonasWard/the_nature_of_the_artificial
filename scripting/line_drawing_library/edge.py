@@ -9,7 +9,7 @@ class State:
         self.color = color
 
 
-class Edge(Line):
+class Edge:
 
     def __init__(self, v0, v1, states=[]):
         self.v0 = v0
@@ -21,6 +21,9 @@ class Edge(Line):
 
     def add_state(self, state):
         self.states.add(state)
+
+    def bounds(self):
+        return Line.bounds(self)
 
 
 if __name__ == "__main__":
@@ -34,11 +37,4 @@ if __name__ == "__main__":
         Edge(v2, v3, [State()])
     ]
 
-    print(isinstance(edges[0], Edge))
-
-    simple_plot(edges[0])
-
-    print("i am type")
-    print(type(edges[0]) == Edge)
-
-    print(isinstance(edges[0], Edge))
+    simple_plot(edges)

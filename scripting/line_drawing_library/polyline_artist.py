@@ -150,7 +150,8 @@ def geos_to_plot(ax, geos):
     elif isinstance(geos, Vertex):
         return [], [geos]
 
-    elif type(geos) == Edge:
+    elif isinstance(geos, Edge):
+        print("displaying an edge")
         edge_to_plot(geos, ax)
         return [geos.bounds()], []
 
@@ -163,8 +164,12 @@ def geos_to_plot(ax, geos):
         return [geos.bounds()], []
 
     elif isinstance(geos, Graph):
+        print("displaying a graph")
         graph_to_plot(geos, ax)
         return [geos.bounds()], []
+
+    else:
+        print("displaying a {}".format(type(geos)))
 
     return bounds, vertices
 
@@ -202,9 +207,9 @@ if __name__ == "__main__":
     vs = [Vertex(i*1.%3.56, i*4.56%7.8, i*.2%.345) for i in range(100)]
     pl = Polyline(vs)
 
-    plot_polyline(pl)
-
-    plot_points(vs)
+    # plot_polyline(pl)
+    #
+    # plot_points(vs)
 
     ln = Line(
         Vertex(0., 0., 0.),
@@ -217,8 +222,8 @@ if __name__ == "__main__":
     )
 
     print(edge)
-    print(type(edge) == Edge)
+    print(type(edge))
 
-    plot_line(ln)
-
-    simple_plot([ln, pl, vs])
+    # plot_line(ln)
+    #
+    # simple_plot([ln, pl, vs])
